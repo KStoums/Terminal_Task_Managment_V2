@@ -37,10 +37,10 @@ var HeaderHelpCommand = color.BlueString("##############################\n#     
 var CommandsList = ">> ttm create (Create a task)" +
 	"\n>> ttm help (See the list of commands)" +
 	"\n>> ttm list (See all your tasks)" +
-	"\n>> ttm edit (Edit a task)*" +
-	"\n>> ttm remove (Remove a task)*" +
+	"\n>> ttm edit (Edit a task)" + color.RedString("*") +
+	"\n>> ttm remove (Remove a task)" + color.RedString("*") +
 	"\n>> ttm clearall (Delete the \"./database\" file)" +
-	"\n\n* = Soon"
+	"\n\n" + color.RedString("*") + " = Soon"
 
 // List Command
 var NoDirOrError = color.RedString(">> Error, you have no task or the \"./database\" file does not exist.")
