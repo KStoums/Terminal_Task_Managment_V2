@@ -39,8 +39,9 @@ var CommandsList = ">> ttm create (Create a task)" +
 	"\n>> ttm list (See all your tasks)" +
 	"\n>> ttm edit (Edit a task)" + color.RedString("*") +
 	"\n>> ttm remove (Remove a task)" + color.RedString("*") +
+	"\n>> ttm options (Change Terminal Task Management options)" + color.RedString("*") +
 	"\n>> ttm clearall (Delete the \"./database\" file)" +
-	"\n\n" + color.RedString("*") + " = Soon"
+	"\n\n" + color.RedString("*") + " = Upcoming features"
 
 // List Command
 var NoDirOrError = color.RedString(">> Error, you have no task or the \"./database\" file does not exist.")
