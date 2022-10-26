@@ -17,7 +17,7 @@ func CreateDir() {
 
 		fmt.Println(messages.CreateDir)
 		time.Sleep(1 * time.Second)
-		barCreateDir := progressbar.Default(100, "Creating the \"./database/\" file")
+		barCreateDir := progressbar.Default(100, "Creation")
 		for i := 0; i < 100; i++ {
 			barCreateDir.Add(50)
 		}

@@ -34,6 +34,10 @@ var createCommand = &cobra.Command{
 			return
 		}
 
+		for i := 0; i < 100; i++ {
+			fmt.Println("")
+		}
+
 		functions.CreateDir()
 		time.Sleep(2 * time.Second)
 
@@ -143,7 +147,7 @@ var createCommand = &cobra.Command{
 		os.WriteFile("./database/database.json", marshal, 644)
 		time.Sleep(1 * time.Second)
 
-		barSendTask := progressbar.Default(100, "Saving the task to \"database.json\" ")
+		barSendTask := progressbar.Default(100, "Saving in progress...")
 		for i := 0; i < 100; i++ {
 			barSendTask.Add(50)
 		}

@@ -18,6 +18,11 @@ var listCommand = &cobra.Command{
 	Use:   "list",
 	Short: "See all your tasks",
 	Run: func(cmd *cobra.Command, args []string) {
+		if len(args) > 0 {
+			fmt.Println(messages.IncorrectSyntax)
+			return
+		}
+
 		_, err := os.Stat("./database")
 		if err != nil {
 			fmt.Println(messages.NoDirOrError)
