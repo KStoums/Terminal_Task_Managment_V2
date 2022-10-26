@@ -4,8 +4,8 @@ import "github.com/fatih/color"
 
 // Databse Messages
 var DatabaseNotExist = color.RedString(">> File \"database.json\" does not exist.")
-var CreateDatabase = ">> Creation in progress..."
 var DatabaseCreated = color.GreenString(">> Creation of \"database.json\" successfully!")
+var CreatingDatabase = ">> Creating the \"database.json\" file..."
 
 // Dir Creation (./database)
 var NoDirExist = color.RedString(">> Error, the \"./database\" file does not exist!")
@@ -37,10 +37,16 @@ var HeaderHelpCommand = color.BlueString("##############################\n#     
 var CommandsList = ">> ttm create (Create a task)" +
 	"\n>> ttm help (See the list of commands)" +
 	"\n>> ttm list (See all your tasks)" +
-	"\n>> ttm edit (Edit a task)" +
-	"\n>> ttm remove (Remove a task)" +
-	"\n>> ttm clearall (Delete the \"database.json\" file)"
+	"\n>> ttm edit (Edit a task)*" +
+	"\n>> ttm remove (Remove a task)*" +
+	"\n>> ttm clearall (Delete the \"./database\" file)" +
+	"\n\n* = Soon"
 
 // List Command
 var NoDirOrError = color.RedString(">> Error, you have no task or the \"./database\" file does not exist.")
 var NoFileOrError = color.RedString(">> Error, you have no task or the \"./database/database.json\" file does not exist.")
+
+// ClearAll Command
+var NoDirOrNoPermission = color.RedString("Error, file does not exist or \"Terminal Task Management\" does not have permissions.")
+var DeletingDir = "Deleting the \"./database/\" file..."
+var DirDeleted = color.GreenString("Delete \"./database/\" file successfully!")

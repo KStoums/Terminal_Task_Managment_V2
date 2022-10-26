@@ -18,7 +18,7 @@ func CreateDatabase() {
 		fmt.Println(messages.DatabaseNotExist)
 		time.Sleep(2 * time.Second)
 
-		fmt.Println(messages.CreateDatabase)
+		fmt.Println(messages.CreatingDatabase)
 		time.Sleep(2 * time.Second)
 		barCreateDatabase := progressbar.Default(100, "Creation")
 		for i := 0; i < 100; i++ {
