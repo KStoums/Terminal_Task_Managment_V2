@@ -30,12 +30,37 @@ var clearAllCommand = &cobra.Command{
 		_, err := os.Stat("./database")
 		if err != nil {
 			if os.IsNotExist(err) {
-				fmt.Println(messages.NoDirExist)
+				fmt.Println(messages.NoDirOrNoPermission)
 				return
 			}
 
 			fmt.Println(err)
 			return
+		}
+
+		for {
+			fmt.Println(messages.ConfirmClearAll)
+			var confirm string
+			fmt.Scan(&confirm)
+
+			if confirm == "N" || confirm == "n" {
+				for i := 0; i < 100; i++ {
+					fmt.Println("")
+				}
+
+				fmt.Println(messages.ClearAllCanceled)
+				return
+			}
+
+			if confirm == "Y" || confirm == "y" {
+				break
+			}
+
+			fmt.Println(messages.NotGoodResponse)
+		}
+
+		for i := 0; i < 100; i++ {
+			fmt.Println("")
 		}
 
 		fmt.Println(messages.DeletingDir)

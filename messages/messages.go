@@ -25,7 +25,7 @@ var ErrorTaskPriority = color.RedString(">> Error, you did not enter a priorty o
 var DueSoonFeature = color.RedString("Error, feature coming soon, please type \"none\"!")
 var DefineDue = ">> How soon do you have to do the task? Type \"none\" to not set a time: "
 
-var ErrorNotInt = color.RedString("Error, the defined time is not a number!")
+var ErrorNotIntDueTime = color.RedString("Error, the defined time is not a number!")
 
 var SendTaskToDb = ">> Saving in \"database.json\"..."
 var TaskCreated = color.GreenString(">> New task created!")
@@ -51,8 +51,11 @@ var NoFileOrError = color.RedString(">> Error, you have no task or the \"./datab
 var NoDirOrNoPermission = color.RedString(">> Error, file does not exist or \"Terminal Task Management\" does not have permissions.")
 var DeletingDir = ">> Deleting the \"./database/\" file..."
 var DirDeleted = color.GreenString(">> Delete \"./database/\" file successfully!")
+var ConfirmClearAll = ">> Are you sure you want to delete the " + color.RedString("\"./database/*\" ") + "file? [Y/N]: "
+var NotGoodResponse = color.RedString(">> I didn't understand your answer!")
+var ClearAllCanceled = color.GreenString(">> You have canceled the deletion of the \"./database/*\" file!")
 
 // Remove Task Command
 var DefineIDTask = "Please enter task ID: "
 var ErrorNotIntTask = color.RedString(">> Error, the defined ID is not a number!")
-var TaskNotFound = color.RedString(">> Error, task does not exist.")
+var TaskNotFoundSearhTask = color.RedString(">> Error, task does not exist.")
