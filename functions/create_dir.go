@@ -25,8 +25,6 @@ func CreateDir() {
 		fmt.Println(messages.DirCreated)
 		time.Sleep(2 * time.Second)
 
-		for i := 0; i < 100; i++ {
-			fmt.Println("")
-		}
+		ClearTerminal()
 	}
 }
