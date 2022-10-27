@@ -22,10 +22,10 @@ var NewTaskPriority = ">> Please enter a priority [Low | High]: "
 var ErrorTaskPriority = color.RedString(">> Error, you did not enter a priorty or the priorty is incorrect." +
 	" Type \"cancel\" to cancel the task creation.")
 
-var DueSoonFeature = color.RedString("Error, feature coming soon, please type \"none\"!")
+var DueSoonFeature = color.RedString(">> Error, feature coming soon, please type \"none\"!")
 var DefineDue = ">> How soon do you have to do the task? Type \"none\" to not set a time: "
 
-var ErrorNotIntDueTime = color.RedString("Error, the defined time is not a number!")
+var ErrorNotIntDueTime = color.RedString(">> Error, the defined time is not a number!")
 
 var SendTaskToDb = ">> Saving in \"database.json\"..."
 var TaskCreated = color.GreenString(">> New task created!")
@@ -33,10 +33,10 @@ var TaskCreated = color.GreenString(">> New task created!")
 var CancelCreateTask = color.RedString(">> Task creation canceled!")
 
 // Help Command
-var HeaderHelpCommand = color.BlueString("##############################\n#         ░H░E░L░P░          #\n#  Ⓣⓔⓡⓜⓘⓝⓐⓛ Ⓣⓐⓢⓚ Ⓜⓐⓝⓐⓖⓜⓔⓝⓣ   #\n##############################")
+var HeaderHelpCommand = color.BlueString("##############################\n#         ░H░E░L░P░          #\n#  Ⓣⓔⓡⓜⓘⓝⓐⓛ Ⓣⓐⓢⓚ ⓜⓐⓝⓐⓖⓜⓔⓝⓣ   #\n##############################")
 var CommandsList = ">> ttm create (Create a task)" +
 	"\n>> ttm help (See the list of commands)" +
-	"\n>> ttm list (See all your tasks)" +
+	"\n>> ttm list (See all your tasks)" + //METTRE COULEUR AU STATUS & PRIORITY
 	"\n>> ttm edit (Edit a task)" + color.RedString("*") + //A FAIRE
 	"\n>> ttm remove (Remove a task)" + color.YellowString("*") + //A FINIR
 	"\n>> ttm options (Change Terminal Task Management options)" + color.RedString("*") + //A FAIRE
@@ -56,6 +56,12 @@ var NotGoodResponse = color.RedString(">> I didn't understand your answer!")
 var ClearAllCanceled = color.GreenString(">> You have canceled the deletion of the \"./database/*\" file!")
 
 // Remove Task Command
-var DefineIDTask = "Please enter task ID: "
+var DefineIDTask = ">> Please enter task ID: "
 var ErrorNotIntTask = color.RedString(">> Error, the defined ID is not a number!")
 var TaskNotFoundSearhTask = color.RedString(">> Error, task does not exist.")
+
+// Options Command
+var CommandOptionsSoon = color.RedString(">> Error, this feature is not yet available!")
+
+// Edit Command
+var CommandEditSoon = color.RedString(">> Error, this feature is not yet available!")
