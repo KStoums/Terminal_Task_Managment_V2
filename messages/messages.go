@@ -2,6 +2,9 @@ package messages
 
 import "github.com/fatih/color"
 
+// Clear Terminal Function
+var ErrorWhenClearTerminal = color.RedString(">> Error while cleaning the terminal. Please contact Kstars#5038 via Discord!")
+
 // Databse Messages
 var DatabaseNotExist = color.RedString(">> File \"database.json\" does not exist.")
 var DatabaseCreated = color.GreenString(">> Creation of \"database.json\" successfully!")
@@ -37,7 +40,7 @@ var HeaderHelpCommand = color.BlueString("##############################\n#     
 var CommandsList = ">> ttm create (Create a task)" + color.GreenString("*") +
 	"\n>> ttm help (See the list of commands)" + color.GreenString("*") +
 	"\n>> ttm list (See all your tasks)" + color.GreenString("*") + //METTRE COULEUR AU STATUS & PRIORITY
-	"\n>> ttm edit (Edit a task)" + color.RedString("*") + //A FAIRE
+	"\n>> ttm edit (Edit a task)" + color.YellowString("*") + //A FINIR
 	"\n>> ttm remove (Remove a task)" + color.GreenString("*") +
 	"\n>> ttm options (Change Terminal Task Management options)" + color.RedString("*") + //A FAIRE
 	"\n>> ttm clearall (Delete the \"./database\" file)" + color.GreenString("*") +
@@ -76,3 +79,7 @@ var EditMenuClosed = color.RedString(">> You have closed the edit options menu")
 
 var DefineEditChoose = ">> Enter the number of an option to modify: "
 var CommandEditSoon = color.RedString(">> Error, this feature is not yet available!")
+
+// ## EDIT NAME TASK ##//
+var CancelEditTask = color.RedString(">> You canceled the task modification.")
+var EnterNewNameTask = ">> Please enter the new name to set to the task: "

@@ -21,6 +21,7 @@ var clearAllCommand = &cobra.Command{
 	Short: "Delete the \"./database/*\" file",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) > 0 {
+			functions.ClearTerminal()
 			fmt.Println(messages.IncorrectSyntax)
 			return
 		}
@@ -30,6 +31,7 @@ var clearAllCommand = &cobra.Command{
 		_, err := os.Stat("./database")
 		if err != nil {
 			if os.IsNotExist(err) {
+				functions.ClearTerminal()
 				fmt.Println(messages.NoDirOrNoPermission)
 				return
 			}
@@ -61,6 +63,7 @@ var clearAllCommand = &cobra.Command{
 		fmt.Println(messages.DeletingDir)
 		err = os.RemoveAll("./database")
 		if err != nil {
+			functions.ClearTerminal()
 			log.Fatalln(err)
 		}
 

@@ -45,7 +45,9 @@ var createCommand = &cobra.Command{
 
 		newTask := TaskStruct{}
 
-		functions.ClearTerminal()
+		for i := 0; i < 100; i++ {
+			fmt.Println("")
+		}
 
 		for {
 			fmt.Print(messages.NewTaskName)

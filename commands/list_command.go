@@ -20,6 +20,7 @@ var listCommand = &cobra.Command{
 	Short: "See all your tasks",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) > 0 {
+			functions.ClearTerminal()
 			fmt.Println(messages.IncorrectSyntax)
 			return
 		}
@@ -28,6 +29,7 @@ var listCommand = &cobra.Command{
 
 		_, err := os.Stat("./database")
 		if err != nil {
+			functions.ClearTerminal()
 			fmt.Println(messages.NoDirOrError)
 			return
 		}
@@ -41,6 +43,7 @@ var listCommand = &cobra.Command{
 
 		err = json.Unmarshal(readFile, &tasks)
 		if err != nil {
+			functions.ClearTerminal()
 			log.Fatalln(err)
 		}
 

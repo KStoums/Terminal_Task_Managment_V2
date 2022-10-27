@@ -16,6 +16,7 @@ var optionsCommand = &cobra.Command{
 	Short: "Change some Terminal Task Management options",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) > 0 {
+			functions.ClearTerminal()
 			fmt.Println(messages.IncorrectSyntax)
 			return
 		}

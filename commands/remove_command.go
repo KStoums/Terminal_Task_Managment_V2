@@ -22,6 +22,7 @@ var removeCommand = &cobra.Command{
 	Short: "Delete a task",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) > 0 {
+			functions.ClearTerminal()
 			fmt.Println(messages.IncorrectSyntax)
 			return
 		}
@@ -30,12 +31,14 @@ var removeCommand = &cobra.Command{
 
 		_, err := os.Stat("./database")
 		if err != nil {
+			functions.ClearTerminal()
 			fmt.Println(messages.NoDirExist)
 			return
 		}
 
 		readFile, err := os.ReadFile("./database/database.json")
 		if err != nil {
+			functions.ClearTerminal()
 			fmt.Println(messages.NoFileOrError)
 			return
 		}
@@ -43,6 +46,7 @@ var removeCommand = &cobra.Command{
 		tasks := []TaskStruct{}
 		err = json.Unmarshal(readFile, &tasks)
 		if err != nil {
+			functions.ClearTerminal()
 			log.Fatal(err)
 		}
 
@@ -68,6 +72,7 @@ var removeCommand = &cobra.Command{
 
 		_, err = fmt.Scan(&id)
 		if err != nil {
+			functions.ClearTerminal()
 			log.Fatalln(err)
 		}
 
@@ -80,6 +85,7 @@ var removeCommand = &cobra.Command{
 
 		strConv, err := strconv.Atoi(id)
 		if err != nil {
+			functions.ClearTerminal()
 			fmt.Println(messages.ErrorNotIntTask)
 			return
 		}
@@ -90,23 +96,25 @@ var removeCommand = &cobra.Command{
 				tasks = append(tasks[:i], tasks[i+1:]...)
 				bytes, err := json.Marshal(tasks)
 				if err != nil {
+					functions.ClearTerminal()
 					log.Fatalln(err)
 				}
 
 				found = true
 				err = os.WriteFile("./database/database.json", bytes, 644)
 				if err != nil {
+					functions.ClearTerminal()
 					log.Fatalln(err)
 				}
 
 				functions.ClearTerminal()
-
 				fmt.Println(fmt.Sprintf(">> Task [%d] has been deleted successfully!", strConv))
 				break
 			}
 		}
 
 		if !found {
+			functions.ClearTerminal()
 			fmt.Println(messages.TaskNotFoundSearhTask)
 		}
 	},

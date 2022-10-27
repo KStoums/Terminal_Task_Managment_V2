@@ -16,6 +16,7 @@ var helpCommand = &cobra.Command{
 	Short: "Allows you to see the list of commands",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) > 0 {
+			functions.ClearTerminal()
 			fmt.Println(messages.IncorrectSyntax)
 			return
 		}
