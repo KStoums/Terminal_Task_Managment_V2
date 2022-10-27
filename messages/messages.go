@@ -34,14 +34,14 @@ var CancelCreateTask = color.RedString(">> Task creation canceled!")
 
 // Help Command
 var HeaderHelpCommand = color.BlueString("##############################\n#         ░H░E░L░P░          #\n#  Ⓣⓔⓡⓜⓘⓝⓐⓛ Ⓣⓐⓢⓚ ⓜⓐⓝⓐⓖⓜⓔⓝⓣ   #\n##############################")
-var CommandsList = ">> ttm create (Create a task)" +
-	"\n>> ttm help (See the list of commands)" +
-	"\n>> ttm list (See all your tasks)" + //METTRE COULEUR AU STATUS & PRIORITY
+var CommandsList = ">> ttm create (Create a task)" + color.GreenString("*") +
+	"\n>> ttm help (See the list of commands)" + color.GreenString("*") +
+	"\n>> ttm list (See all your tasks)" + color.GreenString("*") + //METTRE COULEUR AU STATUS & PRIORITY
 	"\n>> ttm edit (Edit a task)" + color.RedString("*") + //A FAIRE
-	"\n>> ttm remove (Remove a task)" + color.YellowString("*") + //A FINIR
+	"\n>> ttm remove (Remove a task)" + color.GreenString("*") +
 	"\n>> ttm options (Change Terminal Task Management options)" + color.RedString("*") + //A FAIRE
-	"\n>> ttm clearall (Delete the \"./database\" file)" +
-	"\n\n" + color.RedString("*") + " = Feature to do | " + color.YellowString("*") + " = Feature in development"
+	"\n>> ttm clearall (Delete the \"./database\" file)" + color.GreenString("*") +
+	"\n\n" + color.RedString("*") + " = Feature to do | " + color.YellowString("*") + " = Feature in development | " + color.GreenString("*") + " = Feature available"
 
 // List Command
 var NoDirOrError = color.RedString(">> Error, you have no task or the \"./database\" file does not exist.")
@@ -56,12 +56,20 @@ var NotGoodResponse = color.RedString(">> I didn't understand your answer!")
 var ClearAllCanceled = color.GreenString(">> You have canceled the deletion of the \"./database/*\" file!")
 
 // Remove Task Command
-var DefineIDTask = ">> Please enter task ID: "
+var DefineIDTask = ">> Please enter task ID, Type \"cancel\" to cancel the task creation: "
 var ErrorNotIntTask = color.RedString(">> Error, the defined ID is not a number!")
 var TaskNotFoundSearhTask = color.RedString(">> Error, task does not exist.")
+var RemoveTaskCanceled = color.RedString(">> Task deletion has been cancelled!")
 
 // Options Command
 var CommandOptionsSoon = color.RedString(">> Error, this feature is not yet available!")
 
 // Edit Command
+var HeaderEditCommand = color.BlueString("##############################\n#         ░E░D░I░T░          #\n#  Ⓣⓔⓡⓜⓘⓝⓐⓛ Ⓣⓐⓢⓚ ⓜⓐⓝⓐⓖⓜⓔⓝⓣ   #\n##############################")
+var ChooseOneEdit = "[1] Edit task name"
+var ChooseTwoEdit = "[2] Change task status"
+var ChooseThreeEdit = "[3] Change task priority"
+var ChooseForEdit = "[4] Change task due"
+var ChooseFiveEdit = "[5] Close edit menu"
+var DefineEditChoose = ">> Enter the number of an option to modify: "
 var CommandEditSoon = color.RedString(">> Error, this feature is not yet available!")
