@@ -23,6 +23,10 @@ var listCommand = &cobra.Command{
 			return
 		}
 
+		for i := 0; i < 100; i++ {
+			fmt.Println("")
+		}
+
 		_, err := os.Stat("./database")
 		if err != nil {
 			fmt.Println(messages.NoDirOrError)
