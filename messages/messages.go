@@ -37,17 +37,22 @@ var HeaderHelpCommand = color.BlueString("##############################\n#     
 var CommandsList = ">> ttm create (Create a task)" +
 	"\n>> ttm help (See the list of commands)" +
 	"\n>> ttm list (See all your tasks)" +
-	"\n>> ttm edit (Edit a task)" + color.RedString("*") +
-	"\n>> ttm remove (Remove a task)" + color.RedString("*") +
-	"\n>> ttm options (Change Terminal Task Management options)" + color.RedString("*") +
+	"\n>> ttm edit (Edit a task)" + color.RedString("*") + //A FAIRE
+	"\n>> ttm remove (Remove a task)" + color.YellowString("*") + //A FINIR
+	"\n>> ttm options (Change Terminal Task Management options)" + color.RedString("*") + //A FAIRE
 	"\n>> ttm clearall (Delete the \"./database\" file)" +
-	"\n\n" + color.RedString("*") + " = Upcoming features"
+	"\n\n" + color.RedString("*") + " = Feature to do | " + color.YellowString("*") + " = Feature in development"
 
 // List Command
 var NoDirOrError = color.RedString(">> Error, you have no task or the \"./database\" file does not exist.")
 var NoFileOrError = color.RedString(">> Error, you have no task or the \"./database/database.json\" file does not exist.")
 
 // ClearAll Command
-var NoDirOrNoPermission = color.RedString("Error, file does not exist or \"Terminal Task Management\" does not have permissions.")
-var DeletingDir = "Deleting the \"./database/\" file..."
-var DirDeleted = color.GreenString("Delete \"./database/\" file successfully!")
+var NoDirOrNoPermission = color.RedString(">> Error, file does not exist or \"Terminal Task Management\" does not have permissions.")
+var DeletingDir = ">> Deleting the \"./database/\" file..."
+var DirDeleted = color.GreenString(">> Delete \"./database/\" file successfully!")
+
+// Remove Task Command
+var DefineIDTask = "Please enter task ID: "
+var ErrorNotIntTask = color.RedString(">> Error, the defined ID is not a number!")
+var TaskNotFound = color.RedString(">> Error, task does not exist.")
