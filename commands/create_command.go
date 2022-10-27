@@ -9,6 +9,7 @@ import (
 	"github.com/spf13/cobra"
 	"log"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -53,20 +54,20 @@ var createCommand = &cobra.Command{
 		for {
 			fmt.Print(messages.NewTaskName)
 			var taskName string
-			fmt.Scanln(&taskName)
+			fmt.Scan(&taskName)
+
+			if strings.EqualFold(taskName, "cancel") {
+				for i := 0; i < 100; i++ {
+					fmt.Println("")
+				}
+				fmt.Print(messages.CancelCreateTask)
+				return
+			}
 
 			if taskName != "" {
 				newTask.Name = taskName
 				newTask.Status = "Todo"
 				break
-			}
-
-			if taskName == "cancel" || taskName == "Cancel" {
-				for i := 0; i < 100; i++ {
-					fmt.Println("")
-				}
-				fmt.Println(messages.CancelCreateTask)
-				return
 			}
 
 			fmt.Println(messages.ErrorTaskName)
@@ -75,23 +76,23 @@ var createCommand = &cobra.Command{
 		for {
 			fmt.Print(messages.NewTaskPriority)
 			var taskPriority string
-			fmt.Scanln(&taskPriority)
+			fmt.Scan(&taskPriority)
 
-			if taskPriority == "Low" || taskPriority == "low" {
+			if strings.EqualFold(taskPriority, "low") {
 				newTask.Priority = "Low"
 				break
 			}
 
-			if taskPriority == "High" || taskPriority == "high" {
+			if strings.EqualFold(taskPriority, "high") {
 				newTask.Priority = "High"
 				break
 			}
 
-			if taskPriority == "cancel" || taskPriority == "Cancel" {
+			if strings.EqualFold(taskPriority, "cancel") {
 				for i := 0; i < 100; i++ {
 					fmt.Println("")
 				}
-				fmt.Println(messages.CancelCreateTask)
+				fmt.Print(messages.CancelCreateTask)
 				return
 			}
 
@@ -101,9 +102,9 @@ var createCommand = &cobra.Command{
 		for {
 			fmt.Print(messages.DefineDue)
 			var dueTime string
-			fmt.Scanln(&dueTime)
+			fmt.Scan(&dueTime)
 
-			if dueTime == "none" || dueTime == "None" {
+			if strings.EqualFold(dueTime, "none") {
 				break
 			}
 

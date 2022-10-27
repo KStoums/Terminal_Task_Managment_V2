@@ -7,6 +7,7 @@ import (
 	"github.com/spf13/cobra"
 	"log"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -43,16 +44,16 @@ var clearAllCommand = &cobra.Command{
 			var confirm string
 			fmt.Scan(&confirm)
 
-			if confirm == "N" || confirm == "n" {
+			if strings.EqualFold(confirm, "n") {
 				for i := 0; i < 100; i++ {
 					fmt.Println("")
 				}
 
-				fmt.Println(messages.ClearAllCanceled)
+				fmt.Print(messages.ClearAllCanceled)
 				return
 			}
 
-			if confirm == "Y" || confirm == "y" {
+			if strings.EqualFold(confirm, "y") {
 				break
 			}
 
