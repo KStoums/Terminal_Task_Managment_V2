@@ -1,6 +1,7 @@
 package commands
 
 import (
+	"Terminal_Task_Managment_V2/functions"
 	"Terminal_Task_Managment_V2/messages"
 	"fmt"
 	"github.com/spf13/cobra"
@@ -19,10 +20,7 @@ var helpCommand = &cobra.Command{
 			return
 		}
 
-		for i := 0; i < 100; i++ {
-			fmt.Println("")
-		}
-
+		functions.ClearTerminal()
 		fmt.Println(messages.HeaderHelpCommand + "\n" + messages.CommandsList)
 	},
 }

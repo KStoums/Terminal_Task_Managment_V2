@@ -1,6 +1,7 @@
 package commands
 
 import (
+	"Terminal_Task_Managment_V2/functions"
 	"Terminal_Task_Managment_V2/messages"
 	"encoding/json"
 	"fmt"
@@ -23,9 +24,7 @@ var listCommand = &cobra.Command{
 			return
 		}
 
-		for i := 0; i < 100; i++ {
-			fmt.Println("")
-		}
+		functions.ClearTerminal()
 
 		_, err := os.Stat("./database")
 		if err != nil {

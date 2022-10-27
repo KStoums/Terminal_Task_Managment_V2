@@ -35,9 +35,7 @@ var createCommand = &cobra.Command{
 			return
 		}
 
-		for i := 0; i < 100; i++ {
-			fmt.Println("")
-		}
+		functions.ClearTerminal()
 
 		functions.CreateDir()
 		time.Sleep(2 * time.Second)
@@ -47,9 +45,7 @@ var createCommand = &cobra.Command{
 
 		newTask := TaskStruct{}
 
-		for i := 0; i < 100; i++ {
-			fmt.Println("")
-		}
+		functions.ClearTerminal()
 
 		for {
 			fmt.Print(messages.NewTaskName)
@@ -57,9 +53,7 @@ var createCommand = &cobra.Command{
 			fmt.Scan(&taskName)
 
 			if strings.EqualFold(taskName, "cancel") {
-				for i := 0; i < 100; i++ {
-					fmt.Println("")
-				}
+				functions.ClearTerminal()
 				fmt.Print(messages.CancelCreateTask)
 				return
 			}
@@ -89,9 +83,7 @@ var createCommand = &cobra.Command{
 			}
 
 			if strings.EqualFold(taskPriority, "cancel") {
-				for i := 0; i < 100; i++ {
-					fmt.Println("")
-				}
+				functions.ClearTerminal()
 				fmt.Print(messages.CancelCreateTask)
 				return
 			}
@@ -133,9 +125,7 @@ var createCommand = &cobra.Command{
 		}
 		newTask.Id = id
 
-		for i := 0; i < 100; i++ {
-			fmt.Println("")
-		}
+		functions.ClearTerminal()
 
 		fmt.Println(messages.SendTaskToDb)
 

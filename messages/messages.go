@@ -71,5 +71,8 @@ var ChooseTwoEdit = "[2] Change task status"
 var ChooseThreeEdit = "[3] Change task priority"
 var ChooseForEdit = "[4] Change task due"
 var ChooseFiveEdit = "[5] Close edit menu"
+
+var EditMenuClosed = color.RedString(">> You have closed the edit options menu")
+
 var DefineEditChoose = ">> Enter the number of an option to modify: "
 var CommandEditSoon = color.RedString(">> Error, this feature is not yet available!")
