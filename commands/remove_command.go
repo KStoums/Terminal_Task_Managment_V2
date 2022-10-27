@@ -29,10 +29,8 @@ var removeCommand = &cobra.Command{
 
 		functions.ClearTerminal()
 
-		_, err := os.Stat("./database")
-		if err != nil {
-			functions.ClearTerminal()
-			fmt.Println(messages.NoDirExist)
+		checkDirDatabase := functions.CheckDirDatabase()
+		if checkDirDatabase == false {
 			return
 		}
 

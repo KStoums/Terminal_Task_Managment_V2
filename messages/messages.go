@@ -37,14 +37,14 @@ var CancelCreateTask = color.RedString(">> Task creation canceled!")
 
 // Help Command
 var HeaderHelpCommand = color.BlueString("##############################\n#         ░H░E░L░P░          #\n#  Ⓣⓔⓡⓜⓘⓝⓐⓛ Ⓣⓐⓢⓚ ⓜⓐⓝⓐⓖⓜⓔⓝⓣ   #\n##############################")
-var CommandsList = ">> ttm create (Create a task)" + color.GreenString("*") +
-	"\n>> ttm help (See the list of commands)" + color.GreenString("*") +
-	"\n>> ttm list (See all your tasks)" + color.GreenString("*") + //METTRE COULEUR AU STATUS & PRIORITY
+var CommandsList = ">> ttm create (Create a task)" +
+	"\n>> ttm help (See the list of commands)" +
+	"\n>> ttm list (See all your tasks)" + //METTRE COULEUR AU STATUS & PRIORITY
 	"\n>> ttm edit (Edit a task)" + color.YellowString("*") + //A FINIR
-	"\n>> ttm remove (Remove a task)" + color.GreenString("*") +
+	"\n>> ttm remove (Remove a task)" +
 	"\n>> ttm options (Change Terminal Task Management options)" + color.RedString("*") + //A FAIRE
-	"\n>> ttm clearall (Delete the \"./database\" file)" + color.GreenString("*") +
-	"\n\n" + color.RedString("*") + " = Feature to do | " + color.YellowString("*") + " = Feature in development | " + color.GreenString("*") + " = Feature available"
+	"\n>> ttm clearall (Delete the \"./database\" file)" +
+	"\n\n" + color.RedString("*") + " = Feature to do | " + color.YellowString("*") + " = Feature in development"
 
 // List Command
 var NoDirOrError = color.RedString(">> Error, you have no task or the \"./database\" file does not exist.")
@@ -69,11 +69,11 @@ var CommandOptionsSoon = color.RedString(">> Error, this feature is not yet avai
 
 // Edit Command
 var HeaderEditCommand = color.BlueString("##############################\n#         ░E░D░I░T░          #\n#  Ⓣⓔⓡⓜⓘⓝⓐⓛ Ⓣⓐⓢⓚ ⓜⓐⓝⓐⓖⓜⓔⓝⓣ   #\n##############################")
-var ChooseOneEdit = "[1] Edit task name"
-var ChooseTwoEdit = "[2] Change task status"
-var ChooseThreeEdit = "[3] Change task priority"
-var ChooseForEdit = "[4] Change task due"
-var ChooseFiveEdit = "[5] Close edit menu"
+var ChooseOneEdit = "[1] Edit task name" + color.YellowString("*")
+var ChooseTwoEdit = "[2] Change task status" + color.RedString("*")
+var ChooseThreeEdit = "[3] Change task priority" + color.RedString("*")
+var ChooseForEdit = "[4] Change task due" + color.RedString("*")
+var ChooseFiveEdit = "[5] Close edit menu" + "\n\n" + color.RedString("*") + " = Feature to do | " + color.YellowString("*") + " = Feature in development"
 
 var EditMenuClosed = color.RedString(">> You have closed the edit options menu")
 
@@ -83,3 +83,8 @@ var CommandEditSoon = color.RedString(">> Error, this feature is not yet availab
 // ## EDIT NAME TASK ##//
 var CancelEditTask = color.RedString(">> You canceled the task modification.")
 var EnterNewNameTask = ">> Please enter the new name to set to the task: "
+var TaskNameEdited = color.GreenString(">> Your task has been modified successfully!")
+
+// ## EDIT STATUS TASK ##//
+var ConfirmDoneTask = ">> Are you sure you want to switch the task to Done status? [Y/N]: "
+var TaskEditedToDone = color.GreenString(">> The task modification has been successfully completed!")

@@ -27,16 +27,13 @@ var clearAllCommand = &cobra.Command{
 		}
 
 		functions.ClearTerminal()
+		checkDirDatabase := functions.CheckDirDatabase()
+		if checkDirDatabase == false {
+			return
+		}
 
-		_, err := os.Stat("./database")
-		if err != nil {
-			if os.IsNotExist(err) {
-				functions.ClearTerminal()
-				fmt.Println(messages.NoDirOrNoPermission)
-				return
-			}
-
-			fmt.Println(err)
+		checkDatabase := functions.CheckDatabase()
+		if checkDatabase == false {
 			return
 		}
 
@@ -61,7 +58,7 @@ var clearAllCommand = &cobra.Command{
 		functions.ClearTerminal()
 
 		fmt.Println(messages.DeletingDir)
-		err = os.RemoveAll("./database")
+		err := os.RemoveAll("./database")
 		if err != nil {
 			functions.ClearTerminal()
 			log.Fatalln(err)
@@ -74,6 +71,7 @@ var clearAllCommand = &cobra.Command{
 			barDeleteDir.Add(50)
 		}
 		time.Sleep(1 * time.Second)
+		functions.ClearTerminal()
 		fmt.Println(messages.DirDeleted)
 	},
 }

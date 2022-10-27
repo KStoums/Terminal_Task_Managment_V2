@@ -27,15 +27,14 @@ var listCommand = &cobra.Command{
 
 		functions.ClearTerminal()
 
-		_, err := os.Stat("./database")
-		if err != nil {
-			functions.ClearTerminal()
-			fmt.Println(messages.NoDirOrError)
+		checkDirDatabase := functions.CheckDirDatabase()
+		if checkDirDatabase == false {
 			return
 		}
 
 		readFile, err := os.ReadFile("./database/database.json")
 		if err != nil {
+			functions.ClearTerminal()
 			log.Fatalln(err)
 		}
 

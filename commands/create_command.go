@@ -3,6 +3,7 @@ package commands
 import (
 	"Terminal_Task_Managment_V2/functions"
 	"Terminal_Task_Managment_V2/messages"
+	"bufio"
 	"encoding/json"
 	"fmt"
 	"github.com/schollz/progressbar/v3"
@@ -38,22 +39,19 @@ var createCommand = &cobra.Command{
 		functions.ClearTerminal()
 
 		functions.CreateDir()
-		time.Sleep(2 * time.Second)
 
 		functions.CreateDatabase()
 		time.Sleep(2 * time.Second)
 
 		newTask := TaskStruct{}
 
-		for i := 0; i < 100; i++ {
-			fmt.Println("")
-		}
+		functions.ClearTerminal()
 
-		for {
-			fmt.Print(messages.NewTaskName)
-			var taskName string
-			fmt.Scan(&taskName)
+		fmt.Print(messages.NewTaskName)
 
+		scanner := bufio.NewScanner(os.Stdin)
+		for scanner.Scan() {
+			taskName := scanner.Text()
 			if strings.EqualFold(taskName, "cancel") {
 				functions.ClearTerminal()
 				fmt.Print(messages.CancelCreateTask)
@@ -66,6 +64,7 @@ var createCommand = &cobra.Command{
 				break
 			}
 
+			functions.ClearTerminal()
 			fmt.Println(messages.ErrorTaskName)
 		}
 
@@ -90,6 +89,7 @@ var createCommand = &cobra.Command{
 				return
 			}
 
+			functions.ClearTerminal()
 			fmt.Println(messages.ErrorTaskPriority)
 		}
 
@@ -102,6 +102,7 @@ var createCommand = &cobra.Command{
 				break
 			}
 
+			functions.ClearTerminal()
 			fmt.Println(messages.DueSoonFeature)
 		}
 
@@ -115,6 +116,7 @@ var createCommand = &cobra.Command{
 		var data []TaskStruct
 		err = json.Unmarshal(openFile, &data)
 		if err != nil {
+			functions.ClearTerminal()
 			log.Fatalln(err)
 		}
 
@@ -134,6 +136,7 @@ var createCommand = &cobra.Command{
 		data = append(data, newTask)
 		marshal, err := json.Marshal(data)
 		if err != nil {
+			functions.ClearTerminal()
 			log.Fatalln(err)
 		}
 
@@ -145,6 +148,8 @@ var createCommand = &cobra.Command{
 			barSendTask.Add(50)
 		}
 
+		time.Sleep(1 * time.Second)
+		functions.ClearTerminal()
 		fmt.Println(messages.TaskCreated)
 	},
 }
