@@ -1,6 +1,7 @@
-package functions
+package edit_tasks
 
 import (
+	"Terminal_Task_Managment_V2/functions"
 	"Terminal_Task_Managment_V2/messages"
 	"encoding/json"
 	"fmt"
@@ -21,38 +22,52 @@ type TaskStruct struct {
 }
 
 func DoneTask() {
+	dirDatabase := functions.CheckDirDatabase()
+	if dirDatabase == false {
+		return
+	}
+
+	checkDatabase := functions.CheckDatabase()
+	if checkDatabase == false {
+		return
+	}
+
 	fmt.Print(messages.DefineIDTask)
 	var id string
 	fmt.Scan(&id)
 
 	if strings.EqualFold(id, "cancel") {
-		ClearTerminal()
+		functions.ClearTerminal()
 		fmt.Print(messages.EditMenuClosed)
 		return
 	}
 
 	strConv, err := strconv.Atoi(id)
 	if err != nil {
-		ClearTerminal()
+		functions.ClearTerminal()
 		fmt.Println(messages.ErrorNotIntTask)
 		return
 	}
 
-	tasks := []TaskStruct{}
+	tasks := []*TaskStruct{}
 
 	readFile, err := os.ReadFile("./database/database.json")
 	if err != nil {
+		functions.ClearTerminal()
 		log.Fatalln(err)
 	}
-	json.Unmarshal(readFile, &tasks)
+	err = json.Unmarshal(readFile, &tasks)
+	if err != nil {
+		functions.ClearTerminal()
+		log.Fatalln(err)
+	}
 
 	var found bool
 	for _, v := range tasks {
 		if v.Id == strConv {
 			found = true
 
-			ClearTerminal()
-			fmt.Print(v)
+			functions.ClearTerminal()
 			fmt.Print(messages.ConfirmDoneTask)
 			var confirm string
 			fmt.Scan(&confirm)
@@ -62,36 +77,36 @@ func DoneTask() {
 
 				marshal, err := json.Marshal(&tasks)
 				if err != nil {
-					ClearTerminal()
+					functions.ClearTerminal()
 					fmt.Print(err)
 					return
 				}
 
 				err = os.WriteFile("./database/database.json", marshal, 644)
 				if err != nil {
-					ClearTerminal()
+					functions.ClearTerminal()
 					fmt.Print(err)
 					return
 				}
 
-				ClearTerminal()
+				functions.ClearTerminal()
 				fmt.Println(messages.TaskEditedToDone)
 				break
 			}
 
 			if strings.EqualFold(confirm, "n") {
-				ClearTerminal()
+				functions.ClearTerminal()
 				fmt.Println(messages.EditMenuClosed)
 				break
 			}
 
-			ClearTerminal()
+			functions.ClearTerminal()
 			fmt.Println(messages.NotGoodResponse)
 		}
 	}
 
 	if !found {
-		ClearTerminal()
+		functions.ClearTerminal()
 		fmt.Print(messages.TaskNotFoundSearhTask)
 		return
 	}

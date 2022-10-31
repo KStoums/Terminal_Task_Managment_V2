@@ -2,6 +2,7 @@ package commands
 
 import (
 	"Terminal_Task_Managment_V2/functions"
+	"Terminal_Task_Managment_V2/functions/edit_tasks"
 	"Terminal_Task_Managment_V2/messages"
 	"fmt"
 	"github.com/spf13/cobra"
@@ -30,45 +31,35 @@ var editCommand = &cobra.Command{
 			fmt.Scan(&chooseEditing)
 
 			if strings.EqualFold(chooseEditing, "1") {
-				functions.EditNameTask()
+				functions.ClearTerminal()
+				edit_tasks.EditNameTask()
 				return
 			}
 
 			if strings.EqualFold(chooseEditing, "2") {
 				functions.ClearTerminal()
-
-				dirDatabase := functions.CheckDirDatabase()
-				if dirDatabase == false {
-					return
-				}
-
-				checkDatabase := functions.CheckDatabase()
-				if checkDatabase == false {
-					return
-				}
-
-				functions.DoneTask()
+				edit_tasks.DoneTask()
 				return
-
-				if strings.EqualFold(chooseEditing, "3") {
-					fmt.Print(messages.CommandEditSoon)
-					break
-				}
-
-				if strings.EqualFold(chooseEditing, "4") {
-					fmt.Print(messages.CommandEditSoon)
-					break
-				}
-
-				if strings.EqualFold(chooseEditing, "5") {
-					functions.ClearTerminal()
-
-					fmt.Println(messages.EditMenuClosed)
-					break
-				}
-
-				fmt.Print(messages.NotGoodResponse)
-				time.Sleep(2 * time.Second)
 			}
+
+			if strings.EqualFold(chooseEditing, "3") {
+				fmt.Print(messages.CommandEditSoon)
+				break
+			}
+
+			if strings.EqualFold(chooseEditing, "4") {
+				fmt.Print(messages.CommandEditSoon)
+				break
+			}
+
+			if strings.EqualFold(chooseEditing, "5") {
+				functions.ClearTerminal()
+
+				fmt.Println(messages.EditMenuClosed)
+				break
+			}
+
+			fmt.Print(messages.NotGoodResponse)
+			time.Sleep(2 * time.Second)
 		}
 	}}

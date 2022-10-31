@@ -17,7 +17,7 @@ func init() {
 
 var listCommand = &cobra.Command{
 	Use:   "list",
-	Short: "See all your tasks",
+	Short: "See all your edit_tasks",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) > 0 {
 			functions.ClearTerminal()

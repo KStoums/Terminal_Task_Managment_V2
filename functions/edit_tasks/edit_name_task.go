@@ -1,6 +1,7 @@
-package functions
+package edit_tasks
 
 import (
+	"Terminal_Task_Managment_V2/functions"
 	"Terminal_Task_Managment_V2/messages"
 	"bufio"
 	"encoding/json"
@@ -12,14 +13,14 @@ import (
 )
 
 func EditNameTask() {
-	checkDirDatabase := CheckDirDatabase()
+	checkDirDatabase := functions.CheckDirDatabase()
 	if checkDirDatabase == false {
 		return
 	}
 
 	readFile, err := os.ReadFile("./database/database.json")
 	if err != nil {
-		ClearTerminal()
+		functions.ClearTerminal()
 		fmt.Println(messages.NoFileOrError)
 		return
 	}
@@ -29,14 +30,14 @@ func EditNameTask() {
 	fmt.Scan(&id)
 
 	if strings.EqualFold(id, "cancel") {
-		ClearTerminal()
+		functions.ClearTerminal()
 		fmt.Print(messages.CancelEditTask)
 		return
 	}
 
 	strConv, err := strconv.Atoi(id)
 	if err != nil {
-		ClearTerminal()
+		functions.ClearTerminal()
 		fmt.Print(messages.ErrorNotIntTask)
 		return
 	}
@@ -62,24 +63,24 @@ func EditNameTask() {
 
 			bytes, err := json.Marshal(tasks)
 			if err != nil {
-				ClearTerminal()
+				functions.ClearTerminal()
 				log.Fatalln(err)
 			}
 
 			err = os.WriteFile("./database/database.json", bytes, 644)
 			if err != nil {
-				ClearTerminal()
+				functions.ClearTerminal()
 				log.Fatalln(err)
 			}
 
-			ClearTerminal()
+			functions.ClearTerminal()
 			fmt.Println(messages.TaskNameEdited)
 			break
 		}
 	}
 
 	if !found {
-		ClearTerminal()
+		functions.ClearTerminal()
 		fmt.Print(messages.TaskNotFoundSearhTask)
 		return
 	}
