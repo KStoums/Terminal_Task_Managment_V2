@@ -33,19 +33,19 @@ var editCommand = &cobra.Command{
 			if strings.EqualFold(chooseEditing, "1") {
 				functions.ClearTerminal()
 				edit_tasks.EditNameTask()
-				return
+				break
 			}
 
 			if strings.EqualFold(chooseEditing, "2") {
 				functions.ClearTerminal()
 				edit_tasks.DoneTask()
-				return
+				break
 			}
 
 			if strings.EqualFold(chooseEditing, "3") {
 				functions.ClearTerminal()
 				edit_tasks.ChangePriority()
-				return
+				break
 			}
 
 			if strings.EqualFold(chooseEditing, "4") {
@@ -55,8 +55,7 @@ var editCommand = &cobra.Command{
 
 			if strings.EqualFold(chooseEditing, "5") {
 				functions.ClearTerminal()
-
-				fmt.Println(messages.EditMenuClosed)
+				fmt.Print(messages.EditMenuClosed)
 				break
 			}
 

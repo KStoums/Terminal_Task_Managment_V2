@@ -71,7 +71,7 @@ var CommandOptionsSoon = color.RedString(">> Error, this feature is not yet avai
 var HeaderEditCommand = color.BlueString("##############################\n#         ░E░D░I░T░          #\n#  Ⓣⓔⓡⓜⓘⓝⓐⓛ Ⓣⓐⓢⓚ ⓜⓐⓝⓐⓖⓜⓔⓝⓣ   #\n##############################")
 var ChooseOneEdit = "[1] Edit task name" + color.YellowString("*")
 var ChooseTwoEdit = "[2] Change task status"
-var ChooseThreeEdit = "[3] Change task priority" + color.RedString("*")
+var ChooseThreeEdit = "[3] Change task priority"
 var ChooseForEdit = "[4] Change task due" + color.RedString("*")
 var ChooseFiveEdit = "[5] Close edit menu" + "\n\n" + color.RedString("*") + " = Feature to do | " + color.YellowString("*") + " = Feature in development"
 
