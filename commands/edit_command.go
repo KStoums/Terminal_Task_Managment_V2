@@ -43,8 +43,9 @@ var editCommand = &cobra.Command{
 			}
 
 			if strings.EqualFold(chooseEditing, "3") {
-				fmt.Print(messages.CommandEditSoon)
-				break
+				functions.ClearTerminal()
+				edit_tasks.ChangePriority()
+				return
 			}
 
 			if strings.EqualFold(chooseEditing, "4") {

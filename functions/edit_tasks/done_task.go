@@ -90,7 +90,7 @@ func DoneTask() {
 				}
 
 				functions.ClearTerminal()
-				fmt.Println(messages.TaskEditedToDone)
+				fmt.Println(messages.TaskEdited)
 				break
 			}
 

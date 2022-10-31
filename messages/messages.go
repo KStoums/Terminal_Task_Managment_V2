@@ -59,7 +59,7 @@ var NotGoodResponse = color.RedString(">> I didn't understand your answer!")
 var ClearAllCanceled = color.GreenString(">> You have canceled the deletion of the \"./database/*\" file!")
 
 // Remove Task Command
-var DefineIDTask = ">> Please enter task ID, Type \"cancel\" to cancel the task creation: "
+var DefineIDTask = ">> Please enter task ID, Type \"cancel\" to cancel the action: "
 var ErrorNotIntTask = color.RedString(">> Error, the defined ID is not a number!")
 var TaskNotFoundSearhTask = color.RedString(">> Error, task does not exist.")
 var RemoveTaskCanceled = color.RedString(">> Task deletion has been cancelled!")
@@ -87,4 +87,7 @@ var TaskNameEdited = color.GreenString(">> Your task has been modified successfu
 
 // ## EDIT STATUS TASK ##//
 var ConfirmDoneTask = ">> Are you sure you want to switch the task to \"Done\" status? [Y/N]: "
-var TaskEditedToDone = color.GreenString(">> The task modification has been successfully completed!")
+var TaskEdited = color.GreenString(">> The task modification has been successfully completed!")
+
+// ## EDIT PRIORITY TASK ##//
+var DefineNewPriority = ">> Please set the new priority [Low | High]: "
