@@ -3,13 +3,8 @@ package commands
 import (
 	"Terminal_Task_Managment_V2/functions"
 	"Terminal_Task_Managment_V2/messages"
-	"bufio"
-	"encoding/json"
 	"fmt"
 	"github.com/spf13/cobra"
-	"log"
-	"os"
-	"strconv"
 	"strings"
 	"time"
 )
@@ -35,74 +30,8 @@ var editCommand = &cobra.Command{
 			fmt.Scan(&chooseEditing)
 
 			if strings.EqualFold(chooseEditing, "1") {
-				checkDirDatabase := functions.CheckDirDatabase()
-				if checkDirDatabase == false {
-					return
-				}
-
-				readFile, err := os.ReadFile("./database/database.json")
-				if err != nil {
-					functions.ClearTerminal()
-					fmt.Println(messages.NoFileOrError)
-					break
-				}
-
-				fmt.Print(messages.DefineIDTask)
-				var id string
-				fmt.Scan(&id)
-
-				if strings.EqualFold(id, "cancel") {
-					functions.ClearTerminal()
-					fmt.Print(messages.CancelEditTask)
-					return
-				}
-
-				strConv, err := strconv.Atoi(id)
-				if err != nil {
-					functions.ClearTerminal()
-					fmt.Print(messages.ErrorNotIntTask)
-					return
-				}
-
-				tasks := []TaskStruct{}
-				json.Unmarshal(readFile, &tasks)
-
-				var found bool
-				for _, v := range tasks {
-					if v.Id == strConv {
-						found = true
-						fmt.Print(messages.EnterNewNameTask)
-
-						scanner := bufio.NewScanner(os.Stdin)
-						for scanner.Scan() {
-							v.Name = scanner.Text() //## !! A DEBUG !! ##//
-							return
-						}
-
-						bytes, err := json.Marshal(tasks)
-						if err != nil {
-							functions.ClearTerminal()
-							log.Fatalln(err)
-						}
-
-						err = os.WriteFile("./database/database.json", bytes, 644)
-						if err != nil {
-							functions.ClearTerminal()
-							log.Fatalln(err)
-						}
-
-						functions.ClearTerminal()
-						fmt.Println(messages.TaskNameEdited)
-						break
-					}
-				}
-
-				if !found {
-					functions.ClearTerminal()
-					fmt.Print(messages.TaskNotFoundSearhTask)
-					return
-				}
-				break
+				functions.EditNameTask()
+				return
 			}
 
 			if strings.EqualFold(chooseEditing, "2") {
@@ -118,93 +47,28 @@ var editCommand = &cobra.Command{
 					return
 				}
 
-				fmt.Print(messages.DefineIDTask)
-				var id string
-				fmt.Scan(&id)
+				functions.DoneTask()
+				return
 
-				if strings.EqualFold(id, "cancel") {
-					functions.ClearTerminal()
-					fmt.Print(messages.EditMenuClosed)
+				if strings.EqualFold(chooseEditing, "3") {
+					fmt.Print(messages.CommandEditSoon)
 					break
 				}
 
-				strConv, err := strconv.Atoi(id)
-				if err != nil {
+				if strings.EqualFold(chooseEditing, "4") {
+					fmt.Print(messages.CommandEditSoon)
+					break
+				}
+
+				if strings.EqualFold(chooseEditing, "5") {
 					functions.ClearTerminal()
-					log.Fatalln(err)
+
+					fmt.Println(messages.EditMenuClosed)
+					break
 				}
 
-				tasks := []TaskStruct{}
-
-				var found bool
-				for _, v := range tasks { //## !! A DEBUG !! ##//
-					if v.Id == strConv {
-						found = true
-
-						functions.ClearTerminal()
-						fmt.Print(messages.ConfirmDoneTask)
-						var confirm string
-						fmt.Scan(&confirm)
-
-						if strings.EqualFold(confirm, "y") {
-							v.Status = "Done"
-
-							marshal, err := json.Marshal(&tasks)
-							if err != nil {
-								functions.ClearTerminal()
-								fmt.Print(err)
-								return
-							}
-
-							err = os.WriteFile("./database/database.json", marshal, 644)
-							if err != nil {
-								functions.ClearTerminal()
-								fmt.Print(err)
-								return
-							}
-
-							functions.ClearTerminal()
-							fmt.Println(messages.TaskEditedToDone)
-							return
-						}
-
-						if strings.EqualFold(id, "n") {
-							functions.ClearTerminal()
-							fmt.Println(messages.EditMenuClosed)
-							return
-						}
-
-						functions.ClearTerminal()
-						fmt.Println(messages.IncorrectSyntax)
-					}
-				}
-
-				if !found {
-					functions.ClearTerminal()
-					fmt.Print(messages.TaskNotFoundSearhTask)
-					return
-				}
+				fmt.Print(messages.NotGoodResponse)
+				time.Sleep(2 * time.Second)
 			}
-
-			if strings.EqualFold(chooseEditing, "3") {
-				fmt.Print(messages.CommandEditSoon)
-				break
-			}
-
-			if strings.EqualFold(chooseEditing, "4") {
-				fmt.Print(messages.CommandEditSoon)
-				break
-			}
-
-			if strings.EqualFold(chooseEditing, "5") {
-				functions.ClearTerminal()
-
-				fmt.Println(messages.EditMenuClosed)
-				break
-			}
-
-			fmt.Println(messages.NotGoodResponse)
-			time.Sleep(2 * time.Second)
 		}
-	},
-}
+	}}
